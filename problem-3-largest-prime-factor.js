@@ -1,22 +1,21 @@
 'use strict'
 
 const LargestPrimeFactorCalculator = function () {
-  let self = this
   this.primeNumbers = {'2':2}
   this.limit = 2
   this.largestPrimeFactor = null
 
-  this.isPrimeNumber = function(nextNumber){
-    if (self.getPrimeNumbers()[nextNumber] !== undefined)
+  this.isPrimeNumber = function(nextNumber) {
+    if (this.getPrimeNumbers()[nextNumber] !== undefined)
       return true
 
-    let divisiblePrimeNumber = self.primeNumbersArray().find(primeNumber=>nextNumber % primeNumber === 0)
+    let divisiblePrimeNumber = this.primeNumbersArray().find(primeNumber=>nextNumber % primeNumber === 0)
 
     if( divisiblePrimeNumber !== undefined)
       return false
 
-    for(let i = self.lastPrimeNumber() + 1; i < nextNumber; i++){
-      divisiblePrimeNumber = self.primeNumbersArray().find(primeNumber=>i % primeNumber === 0)
+    for(let i = this.lastPrimeNumber() + 1; i < nextNumber; i++){
+      divisiblePrimeNumber = this.primeNumbersArray().find(primeNumber=>i % primeNumber === 0)
 
       if(divisiblePrimeNumber !== undefined)
         continue
@@ -33,21 +32,21 @@ const LargestPrimeFactorCalculator = function () {
   }
 
   this.primeNumberCollect = function (primeNumner = 2) {
-    self.getPrimeNumbers()[primeNumner] = primeNumner
+    this.getPrimeNumbers()[primeNumner] = primeNumner
 
-    return self
+    return this
   }
 
   this.solve = function () {
     let primeFactor = null
 
-    for(let i = self.firstPrimeNumber(); i < self.getLimit(); i++){
-      if (self.getLimit() % i !== 0)
+    for(let i = this.firstPrimeNumber(); i < this.getLimit(); i++){
+      if (this.getLimit() % i !== 0)
         continue
 
-      primeFactor = self.getLimit() / i
+      primeFactor = this.getLimit() / i
 
-      if (self.isPrimeNumber(primeFactor))
+      if (this.isPrimeNumber(primeFactor))
         return this.setLargestPrimeFactor(primeFactor)
     }
 
@@ -55,43 +54,43 @@ const LargestPrimeFactorCalculator = function () {
   }
 
   this.primeNumbersArray = function () {
-    return Object.values(self.getPrimeNumbers())
+    return Object.values(this.getPrimeNumbers())
   }
 
   this.firstPrimeNumber = function () {
-    return parseInt(self.primeNumbersArray()[0])
+    return parseInt(this.primeNumbersArray()[0])
   }
 
   this.lastPrimeNumber = function () {
-    return parseInt(self.primeNumbersArray().slice(-1)[0])
+    return parseInt(this.primeNumbersArray().slice(-1)[0])
   }
 
   this.getLimit = function () {
-    return self.limit
+    return this.limit
   }
 
   this.getPrimeNumbers = function () {
-    return self.primeNumbers
+    return this.primeNumbers
   }
 
   this.getLargestPrimeFactor = function () {
-    return self.largestPrimeFactor
+    return this.largestPrimeFactor
   }
 
   this.setLimit = function (limit = 2){
-    self.limit = limit
+    this.limit = limit
 
     return this
   }
 
   this.setPrimeNumbers = function (primeNumbers = 2){
-    self.primeNumbers = primeNumbers
+    this.primeNumbers = primeNumbers
 
     return this
   }
 
   this.setLargestPrimeFactor = function (largestPrimeFactor = 2){
-    self.largestPrimeFactor = largestPrimeFactor
+    this.largestPrimeFactor = largestPrimeFactor
 
     return this
   }
