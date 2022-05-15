@@ -18,12 +18,12 @@ let isPalindrome = function (test) {
   }
 }
 
-let maxPalindrome = function (threeDigitNumber) {
+let maxPalindromeFor3DigitsProduct = function () {
   let maxPalindromeNumber = 0
   let testNewPalindrome   = null
 
-  for (let i = threeDigitNumber; i > 0; i--) {
-    for (let j = threeDigitNumber; j > 0; j--) {
+  for (let i = 999; i > 99; i--) {
+    for (let j = 999; j > 99; j--) {
       testNewPalindrome = i * j
 
       if(maxPalindromeNumber > testNewPalindrome)
@@ -40,6 +40,6 @@ let maxPalindrome = function (threeDigitNumber) {
   return maxPalindromeNumber
 }
 
-const maxPalindromeNumber = maxPalindrome(999)
+const maxPalindromeNumber = maxPalindromeFor3DigitsProduct()
 
-console.log(`Is ${maxPalindromeNumber} a palindrome? R=${isPalindrome(maxPalindromeNumber)}`)
+console.log(`Max palindrome ${maxPalindromeNumber}`)
