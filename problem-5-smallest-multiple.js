@@ -177,7 +177,10 @@ for (let i = limit; i > 0 ; i--){
   })
 }
 
-let minumMultiple = Object.keys(globalFactors).reduce((previousValue, currentValue)=>{
+let minimumMultiple = Object.keys(globalFactors).reduce((previousValue, currentValue)=>{
   return previousValue * Math.pow(currentValue,globalFactors[currentValue])
 },1)
+
+console.log(globalFactors)
+console.log(minimumMultiple)
 
