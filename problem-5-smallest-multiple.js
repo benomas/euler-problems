@@ -157,7 +157,27 @@ const PrimesTool = function () {
   }
 }
 
-let primesTool = new PrimesTool()
+let primesTool    = new PrimesTool()
+let globalFactors = {}
+let currentPrimeFactors
+let limit = 20
 
-console.log(primesTool.setLimit(600851475143).calculateLargestPrimeFactor().getLargestPrimeFactor())
+primesTool.detectPrimeNumbers(limit)
+
+for (let i = limit; i > 0 ; i--){
+  currentPrimeFactors = primesTool.primeFactors(i)
+
+  Object.keys(currentPrimeFactors).forEach(primeNumber => {
+    if (globalFactors[primeNumber] === undefined)
+      globalFactors[primeNumber] = currentPrimeFactors[primeNumber]
+    else{
+      if (currentPrimeFactors[primeNumber] > globalFactors[primeNumber])
+        globalFactors[primeNumber] = currentPrimeFactors[primeNumber]
+    }
+  })
+}
+
+let minumMultiple = Object.keys(globalFactors).reduce((previousValue, currentValue)=>{
+  return previousValue * Math.pow(currentValue,globalFactors[currentValue])
+},1)
 
